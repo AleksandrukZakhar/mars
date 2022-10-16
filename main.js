@@ -18,7 +18,16 @@ const camera = new THREE.PerspectiveCamera(
 );
 const orbitControl = new OrbitControls(camera, renderer.domElement);
 
-scene.background = new THREE.TextureLoader().load("./assets/stars.jpg");
+scene.background = new THREE.CubeTextureLoader()
+  .setPath("./assets/")
+  .load([
+    "purplenebula_ft.png",
+    "purplenebula_bk.png",
+    "purplenebula_up.png",
+    "purplenebula_dn.png",
+    "purplenebula_rt.png",
+    "purplenebula_lf.png",
+  ]);
 
 const pass = new RenderPass(scene, camera);
 const composer = new EffectComposer(renderer);
